@@ -1,6 +1,7 @@
 # RAG with llama3
 
-This project is a Python-based application that provides an interface for uploading PDF files and querying the stored information. It uses Flask as a web framework and leverages the llama3 open-source model for language understanding and the Chroma vector store for efficient data retrieval.
+This project is a Python-based application that provides an interface for uploading PDF files and querying the stored information. It uses Flask as a web framework and utilizes the open source llama3 model for language understanding and chroma vector memory for efficient data retrieval. The system prompt in this setup aims to extract and summarize information in various PDFs. The agent uses a pattern called “extract_wisdom” from Daniel Miessler's 'Fabric'.
+<br><br>Prompt: https://github.com/danielmiessler/fabric/blob/main/patterns/extract_wisdom/system.md
 
 ## Features
 
@@ -18,11 +19,11 @@ This project is a Python-based application that provides an interface for upload
 
 1. Clone the repository
 ```bash
-git clone <repository_url>
+git clone https://github.com/SunshineMike/RAG_llama3.git
 ```
 2. Navigate to the project directory
 ```bash
-cd <project_directory>
+cd RAG_llama3
 ```
 3. Create a virtual environment
 ```bash
@@ -66,3 +67,8 @@ python3 app.py
 
 ### API
 [API Documentation](documentation/API%20Documentation.md)
+
+For quick testing use **Postman**:
+https://www.postman.com/
+
+
