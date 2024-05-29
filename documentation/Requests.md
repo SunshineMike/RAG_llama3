@@ -36,7 +36,7 @@ Content-Length: 197
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="IPCC_AR6_SYR_SPM.pdf"
+Content-Disposition: form-data; name="file"; filename="your_file.pdf"
 Content-Type: application/pdf
 
 (data)
