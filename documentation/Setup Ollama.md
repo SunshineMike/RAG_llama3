@@ -21,12 +21,16 @@ ollama list
 
 ### Start server
 ```bash
+# if not already running
+# Check: sudo systemctl status ollama
 ollama serve
 ```
 
 ### Use Service
 ```bash
 ollama run llama3
+# Chat with the model
+# /bye to quit
 ```
 Talk to the Model
 

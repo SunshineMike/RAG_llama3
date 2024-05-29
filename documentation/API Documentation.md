@@ -23,14 +23,23 @@ This endpoint is used to interact with the AI model.
 
 **Example:**
 
-```http request
-POST /ai HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
+```python
+import requests
+import json
 
-{
-    "query": "Hello, AI!"
+url = "http://localhost:8080/ai"
+
+payload = json.dumps({
+  "query": "Hy AI!"
+})
+headers = {
+  'A': '',
+  'Content-Type': 'application/json'
 }
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 
 ## 2. Query Database Endpoint
@@ -55,14 +64,23 @@ This endpoint is used to query the database.
 
 **Example:**
 
-```http request
-POST /rag HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
+```python
+import requests
+import json
 
-{
-    "query": "What are this numbers mean?"
+url = "http://localhost:8080/rag"
+
+payload = json.dumps({
+  "query": "Ask your data!"
+})
+headers = {
+  'A': '',
+  'Content-Type': 'application/json'
 }
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
 ```
 
 ## 3. Upload Data (PDF) Endpoint
@@ -73,28 +91,22 @@ This endpoint is used to upload a PDF file.
 
 **Method:** `POST`
 
-**Headers:**
-
-- `Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW`
-
-**Body:**
-
-The body should contain the PDF file data.
-
 **Example:**
 
-```http request
-POST /pdf HTTP/1.1
-Host: localhost:8080
-Content-Length: 197
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+```python
+import requests
 
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="YourFile.pdf"
-Content-Type: application/pdf
+url = "http://localhost:8080/pdf"
 
-(data)
-------WebKitFormBoundary7MA4YWxkTrZu0gW--
+payload = {}
+files=[
+  ('file',('your_file.pdf',open('path/to/your/file/your_file.pdf','rb'),'application/pdf'))
+]
+headers = {
+  'A': ''
+}
+
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+print(response.text)
 ```
-
-Replace `(data)` with the actual content of your PDF file.
