@@ -1,4 +1,4 @@
-# RAG with llama3
+![Example Image](images/logo.png)
 
 This project is a Python-based application that provides an interface for uploading PDF files and querying the stored information. It uses Flask as a web framework and utilizes the open source llama3 model for language understanding and chroma vector memory for efficient data retrieval. The system prompt in this setup aims to extract and summarize information in various PDFs. The agent uses a pattern called “extract_wisdom” from Daniel Miessler's 'Fabric'.
 <br><br>Prompt: https://github.com/danielmiessler/fabric/blob/main/patterns/extract_wisdom/system.md
