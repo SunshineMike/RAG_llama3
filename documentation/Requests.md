@@ -23,7 +23,7 @@ Content-Type: application/json
 Content-Length: 58
 
 {
-    "query": "What is the current mitigation process?"
+    "query": "Ask your data"
 }
 ```
 
