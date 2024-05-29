@@ -21,30 +21,44 @@ This project is a Python-based application that provides an interface for upload
 ```bash
 git clone https://github.com/SunshineMike/RAG_llama3.git
 ```
+<br>
+
 2. Navigate to the project directory
 ```bash
 cd RAG_llama3
 ```
+<br>
+
 3. Create a virtual environment
 ```bash
 python -m venv venv
 ```
+<br>
+
 4. Activate the virtual environment
 ```bash
 source venv/bin/activate
 ```
+<br>
+
 3. Install the required Python packages
 ```bash
 pip install -r requirements.txt
 ```
+<br>
+
 4. Run the setup script for Ollama
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
+<br>
+
 5. Pull the Ollama model
 ```bash
 ollama pull llama3
 ```
+<br>
+
 6. Verify 
 ```bash
 ollama list
