@@ -33,7 +33,6 @@ payload = json.dumps({
   "query": "Hy AI!"
 })
 headers = {
-  'A': '',
   'Content-Type': 'application/json'
 }
 
@@ -74,7 +73,6 @@ payload = json.dumps({
   "query": "Ask your data!"
 })
 headers = {
-  'A': '',
   'Content-Type': 'application/json'
 }
 
@@ -103,7 +101,6 @@ files=[
   ('file',('your_file.pdf',open('path/to/your/file/your_file.pdf','rb'),'application/pdf'))
 ]
 headers = {
-  'A': ''
 }
 
 response = requests.request("POST", url, headers=headers, data=payload, files=files)
