@@ -5,6 +5,7 @@ from flask import Flask, request
 from langchain_community.llms import Ollama
 from langchain_community.vectorstores import Chroma
 from langchain_community.document_loaders import PDFPlumberLoader
+from langchain_community.document_loaders import TextLoader
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -12,7 +13,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain.prompts import PromptTemplate
 
-from config.raw_prompt import RAW_PROMPT_WISDOM
+from config.raw_prompt import RAW_PROMPT_WISDOM, RAW_PROMPT
 
 
 app = Flask(__name__)
@@ -25,7 +26,7 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024,
                                                length_function=len,
                                                is_separator_regex=False)
 
-raw_prompt = PromptTemplate.from_template(RAW_PROMPT_WISDOM)
+raw_prompt = PromptTemplate.from_template(RAW_PROMPT)
 
 
 @app.route("/ai", methods=['POST'])
@@ -95,8 +96,36 @@ def pdf_post():
     return response, 200
 
 
+@app.route("/txt", methods=['POST'])
+def txt_post():
+    print('POST /txt called!')
+    file = request.files["file"]
+    file_name = file.filename
+    file_path = f'txt/{file_name}'
+    file.save(file_path)
+
+    loader = TextLoader(file_path)
+    docs = loader.load_and_split()
+    print(f'Loaded {len(docs)} documents')
+
+    chunks = text_splitter.split_documents(docs)
+    print(f'Splitted {len(chunks)} documents')
+
+    vector_store = Chroma.from_documents(documents=chunks,
+                                         embedding=embedding,
+                                         persist_directory=db_path)
+    vector_store.persist()
+
+    print(f'File saved: {file_path}')
+    response = {"status": "ok",
+                "filename": file_path,
+                "doc_len": len(docs),
+                "chunks": len(chunks)}
+    return response, 200
+
+
 def ensure_directories_exist():
-    directories = ['db', 'pdf']
+    directories = ['db', 'pdf', 'txt']
     for directory in directories:
         if not os.path.exists(directory):
             os.makedirs(directory)

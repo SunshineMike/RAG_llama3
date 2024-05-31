@@ -81,7 +81,35 @@ response = requests.request("POST", url, headers=headers, data=payload)
 print(response.text)
 ```
 
-## 3. Upload Data (PDF) Endpoint
+## 3. Upload Data (TXT) Endpoint
+
+This endpoint is used to upload a TXT file.
+
+**URL:** `/txt`
+
+**Method:** `POST`
+
+**Example:**
+
+```python
+import requests
+
+url = "http://localhost:8080/txt"
+
+payload = {}
+files=[
+  ('file',('your_file.txt',open('path/to/your/file/your_file.txt','rb'),'text/plain'))
+]
+headers = {}
+
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+print(response.text)
+```
+
+
+
+## 4. Upload Data (PDF) Endpoint
 
 This endpoint is used to upload a PDF file.
 

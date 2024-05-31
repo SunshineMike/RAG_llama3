@@ -5,6 +5,8 @@ This project is a Python-based application that provides an interface for upload
 
 ## Features
 
+- **AI Chatbot**: Interact with the AI model using the chat interface. The model is based on the llama3 architecture.
+- **TXT Upload**: Upload your TXT files to the server. The content of the TXTs is processed and stored in a vector database.
 - **PDF Upload**: Upload your PDF files to the server. The content of the PDFs is processed and stored in a vector database.
 - **Query Interface**: Query the content of your uploaded PDFs. The application uses a similarity score threshold to retrieve the most relevant documents.
 
@@ -77,6 +79,7 @@ python3 app.py
 
 - `POST /ai`: Send a chat message to the AI model.
 - `POST /rag`: Query the vector database.
+- `POST /txt`: Upload a TXT file.
 - `POST /pdf`: Upload a PDF file.
 
 ### API
